@@ -3,8 +3,7 @@ import * as pg from "pg";
 const { Pool } = pg.default;
 
 const connectionPool = new Pool({
-  connectionString:
-    "postgresql://your-db-username:your-db-password@localhost:5432/your-db-name",
+  connectionString: "postgresql://postgres:0824575852zt@localhost:5432/crud",
 });
 
 export default connectionPool;
