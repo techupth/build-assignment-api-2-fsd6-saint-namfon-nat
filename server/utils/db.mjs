@@ -1,9 +1,10 @@
 // Create PostgreSQL Connection Pool here !
 import * as pg from "pg";
+import "dotenv/config";
 const { Pool } = pg.default;
 
 const connectionPool = new Pool({
-  connectionString: "postgresql://postgres:0824575852zt@localhost:5432/crud",
+  connectionString: process.env.DB_URL,
 });
 
 export default connectionPool;
