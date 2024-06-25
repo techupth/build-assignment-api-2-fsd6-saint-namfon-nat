@@ -39,31 +39,6 @@ assignmentRouter.post("/", async (req, res) => {
 
 // READ
 assignmentRouter.get("/", async (req, res) => {
-  try {
-    const result = await connectionPool.query(
-      `
-    SELECT * FROM assignments
-    `
-    );
-
-    if (result.rows.length === 0) {
-      return res.status(404).json({
-        message: `no assignments found`,
-      });
-    }
-
-    return res.json({
-      data: result.rows,
-    });
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({
-      message: "Server could not create assignment because database connection",
-    });
-  }
-});
-
-assignmentRouter.get("/", async (req, res) => {
   const title = req.query.title ? `%${req.query.title}%` : null;
   const content = req.query.content ? `%${req.query.content}%` : null;
   const category = req.query.category ? `%${req.query.category}%` : null;
@@ -92,7 +67,7 @@ assignmentRouter.get("/", async (req, res) => {
   } catch (error) {
     console.error(error);
     return res.status(500).json({
-      messagew: "Server could not fetch the assignment due to a database issue",
+      message: "Server could not fetch the assignment due to a database issue",
     });
   }
 });
